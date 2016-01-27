@@ -179,7 +179,7 @@ sub get_stack_trace
     }
   
   #die( @st );
-  return @st;
+  return wantarray ? @st : join( '', @st );
 }
 
 ##############################################################################
