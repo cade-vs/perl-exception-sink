@@ -162,14 +162,17 @@ sub boom($)
 sub get_stack_trace
 {
   my @st;
-  my $i = 1; # skip get_stack_trace
+  my $i;
   my $ml;
+  
+  $i = 1; # skip get_stack_trace
   while ( my ( $pack, $file, $line, $subname ) = caller($i++) )
     {
     my $l = length( "$pack::$subname" );
     $ml = $l if $l > $ml;
     }
-  my $i = 1; # skip get_stack_trace
+  
+  $i = 1; # skip get_stack_trace
   while ( my ( $pack, $file, $line, $subname ) = caller($i++) )
     {
     my $ii = $i - 1;
