@@ -1,5 +1,10 @@
 Revision history for Perl extension Exception::Sink.
 
+3.07  2016.07.04
+
+    1. split file name from the line number in stack trace output.
+       this makes mouse double-click selection easier
+
 3.06  2016.01.27
 
     1. fixed get_stack_trace() return data in scalar context

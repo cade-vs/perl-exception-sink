@@ -27,7 +27,7 @@ our @EXPORT_OK   = qw(
                      );
                      
 our %EXPORT_TAGS = ( 'none' => [ ] );
-our $VERSION     = '3.06';
+our $VERSION     = '3.07';
 use Exception::Sink::Class;
 use strict;
 
@@ -178,7 +178,7 @@ sub get_stack_trace
     my $ii = $i - 1;
     my $l = length( "$pack::$subname" );
     my $pad = ' ' x ( $ml - $l );
-    push @st, "      [$$] $ii: $pack::$subname $pad $file:$line\n";
+    push @st, "      [$$] $ii: $pack::$subname $pad $file line $line\n";
     }
   
   #die( @st );
