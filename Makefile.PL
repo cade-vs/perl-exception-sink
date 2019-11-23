@@ -5,6 +5,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Exception::Sink',
     VERSION_FROM      => 'lib/Exception/Sink.pm', # finds $VERSION
+    LICENSE           => 'gpl_2',
     PREREQ_PM         => {}, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/Exception/Sink.pm', # retrieve abstract from module
