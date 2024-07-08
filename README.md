@@ -43,15 +43,15 @@ Exception::Sink - general purpose compact exception handling.
 
     sink() gets only one argument, string with format:
 
-     "CLASS: ID: description"
-     "CLASS: description"
-     "description"
+       "CLASS: ID: description"
+       "CLASS: description"
+       "description"
 
     exception will have accordingly:
 
-     CLASS and ID
-     CLASS only
-     CLASS will be 'SINK'
+       CLASS and ID
+       CLASS only
+       CLASS will be 'SINK'
 
     then it will throw (sink/dive) an exception hash ref.
 
@@ -85,8 +85,16 @@ Exception::Sink - general purpose compact exception handling.
 
 ## boom($)
 
-    special version of sink() it will always has class 'BOOM' and will has
+    special version of sink() it will always has class 'BOOM' and has
     full stack trace with pid information added to the sink() description text.
+
+## boom\_skip($$)
+
+    same as boom() but has extra argument for skip number of the first N context
+    frames. it is useful when boom() should be called from a handler, which is
+    not informative frame since it will be always present.
+    
+    if you are not sure what this means, just ignore it :)
 
 ## get\_stack\_trace()
 
@@ -127,27 +135,27 @@ Exception::Sink - general purpose compact exception handling.
     If you want surface() to handle class or otherwise to continue dive/sink,
     you should use surface2() instead:
 
-    eval
-      {
       eval
         {
-        sink "TESTING: testing resink/dive surface2()";
+        eval
+          {
+          sink "TESTING: testing resink/dive surface2()";
+          };
+        if( surface2 'BIG_ONE' )
+          {
+          # only BIG_ONE exception will be handled here,
+          # all the rest will dive/resink below...
+          }
         };
-      if( surface2 'BIG_ONE' )
-        {
-        # only BIG_ONE exception will be handled here,
-        # all the rest will dive/resink below...
-        }
-      };
-    # TESTING exception will reach here
+      # TESTING exception will reach here
 
     If you do not want to autoimport all functions:
 
-    use Exception::Sink qw( :none )
+      use Exception::Sink qw( :none )
 
     If you want to use only surface() (probably with die() instead of sink() ):
 
-    use Exception::Sink qw( :none surface )
+      use Exception::Sink qw( :none surface )
 
 # TODO
 
@@ -157,7 +165,6 @@ Exception::Sink - general purpose compact exception handling.
 
     git@github.com:cade-vs/perl-exception-sink.git
     
-
     git clone git://github.com/cade-vs/perl-exception-sink.git
     
 
