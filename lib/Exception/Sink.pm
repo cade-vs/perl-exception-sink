@@ -31,7 +31,7 @@ our @EXPORT_OK   = qw(
                      );
                      
 our %EXPORT_TAGS = ( 'none' => [ ] );
-our $VERSION     = '3.08';
+our $VERSION     = '3.09';
 use Exception::Sink::Class;
 use strict;
 
@@ -42,7 +42,7 @@ sub dive();
 sub surface(@);
 sub surface2(@);
 
-sub boom($$);
+sub boom_skip($$);
 sub boom($);
 
 ##############################################################################
